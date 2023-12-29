@@ -14,19 +14,18 @@ export default function Navbar() {
     } else {
       setScrolled(false);
     }
-    console.log(window.scrollY);
   };
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때 이벤트 리스너 등록
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
+    window.addEventListener("scroll", handleScroll);
+    
     // 컴포넌트가 언마운트될 때 이벤트 리스너 해제
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []); // 빈 배열은 마운트 및 언마운트 시에만 실행
-
+  
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
       <div className="flex items-center">
