@@ -1,12 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import styles from "@/styles/Navbar.module.css";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const router = useRouter();
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+    console.log(window.scrollY);
+  };
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 이벤트 리스너 등록
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 해제
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // 빈 배열은 마운트 및 언마운트 시에만 실행
 
   return (
-    <nav className="flex items-center flex-wrap bg-gray-800 p-4 justify-between">
+    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
       <div className="flex items-center">
         {/* sidebar menu-button */}
         <div className="block lg:hidden mr-6">
@@ -29,7 +51,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <div className='font-bold'>
+      <div className="font-bold">
         {/* navbar links */}
         <Link
           className={`${
