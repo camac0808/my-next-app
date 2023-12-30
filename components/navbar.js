@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "@/styles/Navbar.module.css";
 import { useEffect, useState } from "react";
+import LogoSVG from "@/public/logo.svg";
 
 export default function Navbar() {
   const router = useRouter();
@@ -40,7 +40,7 @@ export default function Navbar() {
         </div>
 
         {/* navbar logo */}
-        <Image className="mr-4" src="/tailwindcss-icon-svgrepo-com.svg" alt="logo" width={30} height={30} />
+        <LogoSVG className="hidden lg:block h-8 w-auto mr-4" />
 
         {/* navbar title */}
         <Link className="hover:text-white transition duration-200 ease-in-out" href="/">

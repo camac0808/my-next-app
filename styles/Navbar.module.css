@@ -8,10 +8,14 @@
   position: fixed;
   width: 100%;
   z-index: 100;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  height: 70px;
+  color: var(--gray)
 }
 
 .nav.scrolled {
-  background-color: #000;
+  background-color: #151515;
+  height: 60px;
+  padding: 10px;
 }
 
