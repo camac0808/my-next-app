@@ -7,6 +7,9 @@
   min-height: 100vh;
 }
 
+.main h1 {
+  color: white;
+}
 .ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

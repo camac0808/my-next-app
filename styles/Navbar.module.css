@@ -1,3 +1,4 @@
+
 .nav {
   display: flex;
   background-color: #161d24;
@@ -10,12 +11,14 @@
   z-index: 100;
   transition: all 0.3s ease;
   height: 70px;
-  color: var(--gray)
+  color: var(--gray);
+  font-size: 1.2rem;
 }
 
 .nav.scrolled {
   background-color: #151515;
   height: 60px;
   padding: 10px;
+  box-shadow: 0 0 10px rgba(13, 190, 175)
 }
 
