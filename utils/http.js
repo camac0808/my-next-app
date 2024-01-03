@@ -1,21 +1,19 @@
-const options = (method) => {
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+// now playing movie 목록을 가져오는 함수
+export async function fetchNowPlayingMovies() {
   const options = {
-    method: method,
+    method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMzg1Mjg2NGVlMjZlMjE4NzJiMDIzZjQwM2RiNzM3NCIsInN1YiI6IjY1Nzk0NTRhODlkOTdmMDEzYWNhMGU3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TiZ9OqB_7mP67_IkCcYYIYZFghq_iQxb3baNYc0Nw0Q",
+      Authorization: API_KEY,
     },
   };
-};
-
-// popular movie 목록을 가져오는 함수
-export default async function fetchPopularMovies() {
   // async 함수를 사용하여 데이터를 가져옴
   try {
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-      options("GET")
+      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      options
     );
     const jsonData = await response.json();
     return jsonData;
@@ -24,14 +22,19 @@ export default async function fetchPopularMovies() {
   }
 }
 
-// top rated movie 목록을 가져오는 함수
-export async function fetchNowPlayingMovies() {
+// popular movie 목록을 가져오는 함수
+export default async function fetchPopularMovies() {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: API_KEY,
+    },
+  };
+
   // async 함수를 사용하여 데이터를 가져옴
   try {
-    const response = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-      options("GET")
-    );
+    const response = await fetch("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1", options);
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
@@ -41,8 +44,15 @@ export async function fetchNowPlayingMovies() {
 
 // 영화 상세 정보를 가져오는 함수
 export async function fetchMovieDetail(id) {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: API_KEY,
+    },
+  };
   try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}`, options("GET"));
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}`, options);
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
