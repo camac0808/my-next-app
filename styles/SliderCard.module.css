@@ -1,5 +1,5 @@
-.image img{
-  height: 100%;
+.image{
+  width: auto;
   object-fit: cover;
   transition: all 0.3s ease-in-out;
 }
