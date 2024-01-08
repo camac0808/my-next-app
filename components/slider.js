@@ -1,17 +1,9 @@
-import styles from "@/styles/Slider.module.css";
 import fetchNowPlayingMovies from "@/utils/http";
 import { CircularProgress } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import SliderCard from "./slider-card";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
+import Carousel from './carousel';
 
 export default function Slider() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ 
-    delay: 5000,
-    stopOnMouseEnter: true,
-    stopOnInteraction: false,
-  })]);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["nowPlayingMovies"],
@@ -28,24 +20,14 @@ export default function Slider() {
     return <p>Error: {error.message}</p>;
   }
 
-  if (emblaApi) {
-    console.log(emblaApi.slideNodes());
-  }
   console.log(data);
-
   return (
     <>
-      <h1 className={styles.h1}>Now Playing</h1>
+      <h1>Now Playing</h1>
 
-      <div className={styles.embla} ref={emblaRef}>
-        <ul className={styles.embla__container}>
-          {data.results.slice(0, 5).map((movie) => (
-            <li className={styles.embla__slide} key={movie.id}>
-              <SliderCard movie={movie} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <section>
+        <Carousel data={data.results} />
+      </section>
     </>
   );
 }
