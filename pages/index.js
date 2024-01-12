@@ -3,7 +3,7 @@ import { CircularProgress } from "@mui/material";
 import Card from "@/components/card";
 import styles from "@/styles/Home.module.css";
 import fetchPopularMovies from "@/utils/http";
-import Slider from '@/components/slider';
+import CarouselSection from '@/components/carousel-section';
 
 export default function Home() {
   const { data, isLoading, error } = useQuery({
@@ -24,7 +24,7 @@ export default function Home() {
   console.log(data);
   return (
     <div className={styles.main}>
-      <Slider />
+      <CarouselSection />
       <h1>Popular Movies</h1>
       {data && (
         <ul className={styles.ul}>

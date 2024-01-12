@@ -5,7 +5,7 @@ import StarSVG from "@/public/star.svg";
 
 export default function Card({ movie }) {
   const { title, id, poster_path, vote_average } = movie;
-  const posterPath = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  const posterPath = `https://image.tmdb.org/t/p/original${poster_path}`;
   const totalStars = 5;
 
   // 별 평점

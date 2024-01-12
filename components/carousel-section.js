@@ -1,10 +1,10 @@
 import fetchNowPlayingMovies from "@/utils/http";
 import { CircularProgress } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import Carousel from './carousel';
+import Carousel from "./carousel";
+import styles from "@/styles/Carousel.module.css";
 
-export default function Slider() {
-
+export default function CarouselSection() {
   const { data, isLoading, error } = useQuery({
     queryKey: ["nowPlayingMovies"],
     queryFn: fetchNowPlayingMovies,
@@ -23,9 +23,8 @@ export default function Slider() {
   console.log(data);
   return (
     <>
-      <h1>Now Playing</h1>
-
-      <section>
+      <h1 className={styles.title}>Now Playing</h1>
+      <section className={styles.container}>
         <Carousel data={data.results} />
       </section>
     </>
