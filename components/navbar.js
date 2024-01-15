@@ -45,7 +45,7 @@ export default function Navbar() {
         {/* navbar title */}
         <Link className="hover:text-white transition duration-200 ease-in-out" href="/">
           <div className="flex-shrink-0 text-white mr-6">
-            <span className="font-semibold text-xl tracking-tight mr-1">System</span>
+            <span className="font-semibold text-xl tracking-tight mr-1">Movie</span>
             <span className="font-semibold text-xl tracking-tight text-teal-400">Table</span>
           </div>
         </Link>

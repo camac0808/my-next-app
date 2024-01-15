@@ -13,8 +13,7 @@ import "swiper/css/pagination";
 import styles from "@/styles/Carousel.module.css";
 
 export default function Carousel({ data }) {
-  SwiperCore.use([Navigation, Autoplay, Pagination]);
-  const swiper = useSwiper();
+  SwiperCore.use([Navigation, Autoplay ]);
 
   return (
     <div className={styles.container}>
@@ -30,27 +29,20 @@ export default function Carousel({ data }) {
         // autoplay={{ delay: 3000, disableOnInteraction: false }}
         spaceBetween={0}
         slidesPerView={1}
-        pagination={{ clickable: true }}
         centeredSlides={true}
         navigation={{
-          prevEl: ".prev",
-          nextEl: ".next",
+          prevEl: `.${styles.prev}`,
+          nextEl: `.${styles.next}`,
         }}
       >
-        {data.slice(0, 10).map((movie) => (
-          <SwiperSlide className={styles.swiperSlide} key={movie.id}>
-            <Link href={`/detail/${movie.id}`}>
-              <Image
-                className={styles.image}
-                src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                alt={movie.title}
-                title={movie.title}
-                width={350}
-                height={200}
-              />
-            </Link>
-          </SwiperSlide>
-        ))}
+        <SwiperSlide className={styles.swiperSlide}>
+          <Image className={styles.image} src="/carousel-image/dr-strange.jpg" alt="dr-strange" width={520} height={380} />
+          <div className={styles.swiperContent}>
+            <h2>Doctor Stranger</h2>
+            <p>America Chavez and a version of Stephen Strange are chased by a demon in the space between universes
+                while searching for the Book of Vishanti</p>
+          </div>
+        </SwiperSlide>  
       </Swiper>
 
       <div className={styles.next}>
@@ -61,3 +53,19 @@ export default function Carousel({ data }) {
     </div>
   );
 }
+
+// if you want to use api data
+// {data.slice(0, 10).map((movie) => (
+//   <SwiperSlide className={styles.swiperSlide} key={movie.id}>
+//     <Link href={`/detail/${movie.id}`}>
+//       <Image
+//         className={styles.image}
+//         src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+//         alt={movie.title}
+//         title={movie.title}
+//         width={350}
+//         height={200}
+//       />
+//     </Link>
+//   </SwiperSlide>
+// ))}
