@@ -13,8 +13,26 @@ import "swiper/css/pagination";
 import styles from "@/styles/Carousel.module.css";
 
 export default function Carousel({ data }) {
-  SwiperCore.use([Navigation, Autoplay ]);
+  SwiperCore.use([Navigation, Autoplay]);
 
+  // 영화 내용 길이 짜르기
+  function truncate(str, num) {
+    if (str.length <= num) {
+      return str;
+    }
+    return str.slice(0, num) + "...";
+  }
+
+  let DoctorStrangetext = `America Chavez and a version of Stephen Strange are chased by a demon in the space between universes while searching for the Book of Vishanti`;
+  let GuardiansOfTheGalaxytext = `A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.`;
+  let JusticeLeaguetext = `Determined to ensure Superman's ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions.`;
+  let SpidermanText = `Following the events of Avengers: Endgame (2019), Spider-Man must step up to take on new threats
+  in a world that has changed forever.`;
+  let SuicideSquadText = `Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve
+  prison join the super-secret, super-shady Task Force X as they are dropped off at the remote,
+  enemy-infused island of Corto Maltese.`;
+  let ThorText = `Imprisoned on the planet Sakaar, Thor must race against time to return to Asgard and stop
+  Ragnarök, the destruction of his world, at the hands of the powerful and ruthless villain Hela.`;
   return (
     <div className={styles.container}>
       <div className={styles.prev}>
@@ -36,13 +54,83 @@ export default function Carousel({ data }) {
         }}
       >
         <SwiperSlide className={styles.swiperSlide}>
-          <Image className={styles.image} src="/carousel-image/dr-strange.jpg" alt="dr-strange" width={520} height={380} />
+          <Image
+            className={styles.image}
+            src="/carousel-image/dr-strange.jpg"
+            alt="dr-strange"
+            width={1280}
+            height={320}
+          />
           <div className={styles.swiperContent}>
             <h2>Doctor Stranger</h2>
-            <p>America Chavez and a version of Stephen Strange are chased by a demon in the space between universes
-                while searching for the Book of Vishanti</p>
+            <p>{truncate(DoctorStrangetext, 150)}</p>
           </div>
-        </SwiperSlide>  
+        </SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide}>
+          <Image
+            className={styles.image}
+            src="/carousel-image/guardians-of-the-galaxy.jpg"
+            alt="guardians-of-the-galaxy"
+            width={1280}
+            height={320}
+          />
+          <div className={styles.swiperContent}>
+            <h2>Guardians Of The Galaxy</h2>
+            <p>{truncate(GuardiansOfTheGalaxytext, 150)}</p>
+          </div>
+        </SwiperSlide>{" "}
+        <SwiperSlide className={styles.swiperSlide}>
+          <Image
+            className={styles.image}
+            src="/carousel-image/justice-league.jpg"
+            alt="justice-league"
+            width={1280}
+            height={320}
+          />
+          <div className={styles.swiperContent}>
+            <h2>Justice League</h2>
+            <p>{truncate(JusticeLeaguetext, 150)}</p>
+          </div>
+        </SwiperSlide>{" "}
+        <SwiperSlide className={styles.swiperSlide}>
+          <Image
+            className={styles.image}
+            src="/carousel-image/spider-man.jpg"
+            alt="spider-man"
+            width={1280}
+            height={320}
+          />
+          <div className={styles.swiperContent}>
+            <h2>Spider-Man: Far from Home</h2>
+            <p>{truncate(SpidermanText, 150)}</p>
+          </div>
+        </SwiperSlide>{" "}
+        <SwiperSlide className={styles.swiperSlide}>
+          <Image
+            className={styles.image}
+            src="/carousel-image/suicide-squad.jpg"
+            alt="suicide-squad"
+            width={1280}
+            height={320}
+          />
+          <div className={styles.swiperContent}>
+            <h2>The Suicide Squad</h2>
+            <p>{truncate(SuicideSquadText, 150)}</p>
+          </div>
+        </SwiperSlide>{" "}
+        <SwiperSlide className={styles.swiperSlide}>
+          <Image
+            className={styles.image}
+            src="/carousel-image/thor-ragnarok.jpg"
+            alt="thor-ragnarok"
+            width={1280}
+            height={320}
+          />
+          <div className={styles.swiperContent}>
+            <h2>Thor: Ragnarok</h2>
+            <p>{truncate(ThorText, 150)}</p>
+          </div>
+        </SwiperSlide>
       </Swiper>
 
       <div className={styles.next}>
