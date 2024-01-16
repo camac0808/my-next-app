@@ -10,11 +10,6 @@
 .main h1 {
   color: white;
 }
-.ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1.5rem 0.8rem;
-}
 
 .description {
   display: inherit;
@@ -55,7 +50,6 @@
   width: 100%;
 }
 
-
 .center {
   display: flex;
   justify-content: center;
@@ -81,7 +75,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -91,8 +85,6 @@
 .logo {
   position: relative;
 }
-
-
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -180,11 +172,7 @@
     inset: auto 0 0;
     padding: 2rem;
     height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
+    background: linear-gradient(to bottom, transparent 0%, rgb(var(--background-end-rgb)) 40%);
     z-index: 1;
   }
 }
