@@ -1,14 +1,19 @@
-import { useParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { fetchMovieDetail } from "@/utils/http";
 import { CircularProgress } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
+import styles from "@/styles/Detail.module.css";
 import Image from "next/image";
 
 export default function Detail() {
-  const { id } = useParams();
+  const router = useRouter();
+  const { id } = router.query;
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["movie", id],
     queryFn: () => fetchMovieDetail(id),
+    staleTime: Infinity, // 24시간 동안은 캐시된 데이터를 사용 (5초가 지나면 새로운 데이터를 가져옴)
+    cacheTime: 1000 * 60 * 60 * 24, // 24시간 동안 캐시된 데이터를 보관 (5초가 지나면 캐시된 데이터는 삭제)
   });
 
   if (isLoading) {
@@ -19,16 +24,29 @@ export default function Detail() {
     return <p>Error: {error.message}</p>;
   }
 
-  console.log(data);
-  const posterPath = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
   return (
-    <>
-      <h1>Movie Detail</h1>
-      <div>
-        <Image src={posterPath} alt={data.title} title={data.title} width={200} height={200} />
-        <h2>{data.title}</h2>
-        <p>{data.overview}</p>
+    <div className={styles.container}>
+    
+      <div className={styles.imageContainer}>
+        <Image
+          src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+          alt={data.title}
+          title={data.title}
+          width={200}
+          height={200}
+        />
       </div>
-    </>
+
+      <div className={styles.contentContainer}>
+        <h2>{data.title}</h2>
+        <div className={styles.overviewContainer}>
+          <p>{data.overview}</p>
+          <div className={styles.buttonContainer}>
+            <button className={styles.button}>Play Movie</button>
+            <button className={styles.button}>Trailer</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

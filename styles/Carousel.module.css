@@ -1,5 +1,12 @@
-.h1 {
+.title {
   color: white;
+  font-size: 45px;
+  line-height: 60px;
+  letter-spacing: normal;
+  text-align: center;
+  font-weight: 700;
+  font-family: 'Noto Sans', sans-serif;
+  padding: 4px;
 }
 
 /* carousel */

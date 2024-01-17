@@ -6,7 +6,7 @@ export async function fetchNowPlayingMovies() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: API_KEY,
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMzg1Mjg2NGVlMjZlMjE4NzJiMDIzZjQwM2RiNzM3NCIsInN1YiI6IjY1Nzk0NTRhODlkOTdmMDEzYWNhMGU3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TiZ9OqB_7mP67_IkCcYYIYZFghq_iQxb3baNYc0Nw0Q',
     },
   };
   // async 함수를 사용하여 데이터를 가져옴
@@ -28,8 +28,7 @@ export default async function fetchPopularMovies() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMzg1Mjg2NGVlMjZlMjE4NzJiMDIzZjQwM2RiNzM3NCIsInN1YiI6IjY1Nzk0NTRhODlkOTdmMDEzYWNhMGU3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TiZ9OqB_7mP67_IkCcYYIYZFghq_iQxb3baNYc0Nw0Q",
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMzg1Mjg2NGVlMjZlMjE4NzJiMDIzZjQwM2RiNzM3NCIsInN1YiI6IjY1Nzk0NTRhODlkOTdmMDEzYWNhMGU3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TiZ9OqB_7mP67_IkCcYYIYZFghq_iQxb3baNYc0Nw0Q',
     },
   };
 
@@ -48,12 +47,13 @@ export async function fetchMovieDetail(id) {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: API_KEY,
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMzg1Mjg2NGVlMjZlMjE4NzJiMDIzZjQwM2RiNzM3NCIsInN1YiI6IjY1Nzk0NTRhODlkOTdmMDEzYWNhMGU3MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TiZ9OqB_7mP67_IkCcYYIYZFghq_iQxb3baNYc0Nw0Q',
     },
   };
   try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}`, options);
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US'`, options);
     const jsonData = await response.json();
+    console.log(id, jsonData)
     return jsonData;
   } catch (error) {
     throw new Error(error);
