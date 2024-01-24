@@ -26,19 +26,28 @@ export default function Detail() {
 
   return (
     <div className={styles.container}>
-    
       <div className={styles.imageContainer}>
         <Image
           src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
           alt={data.title}
           title={data.title}
-          width={200}
+          width={500}
           height={200}
         />
       </div>
 
       <div className={styles.contentContainer}>
-        <h2>{data.title}</h2>
+        <div className={styles.titleContainer}>
+          <h2>{data.title}</h2>
+          <p>{data.release_date}</p>
+          <p>{data.vote_average}</p>
+          <p>
+            {data.genres.map((genre) => (
+              <span key={genre.id}>{genre.name}</span>
+            ))}
+          </p>
+        </div>
+
         <div className={styles.overviewContainer}>
           <p>{data.overview}</p>
           <div className={styles.buttonContainer}>
