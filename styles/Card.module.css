@@ -1,7 +1,7 @@
 .container {
   width: 250px;
   height: 400px;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,11 +50,3 @@
   margin-top: 0.5rem;
 }
 
-.starRating {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0.5rem; 
-  gap: 5px;
-}

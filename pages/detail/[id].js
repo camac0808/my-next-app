@@ -4,6 +4,7 @@ import { CircularProgress } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import styles from "@/styles/Detail.module.css";
 import Image from "next/image";
+import StarRating from "@/components/star-rating";
 
 export default function Detail() {
   const router = useRouter();
@@ -39,11 +40,15 @@ export default function Detail() {
       <div className={styles.contentContainer}>
         <div className={styles.titleContainer}>
           <h2>{data.title}</h2>
-          <p>{data.release_date}</p>
-          <p>{data.vote_average}</p>
+          <div className={styles.releaseContainer}>
+            <p>{data.release_date}</p>
+            <div className={styles.starContainer}>
+              <StarRating vote_average={data.vote_average} totalStars={5} fillColor="#0dbeaf" halfColor="#074a44" />
+            </div>
+          </div>
           <p>
-            {data.genres.map((genre) => (
-              <span key={genre.id}>{genre.name}</span>
+            {data.genres.map((genre, index, array) => (
+              <span key={genre.id}>{genre.name + (index !== array.length - 1 ? " / " : "")}</span>
             ))}
           </p>
         </div>
