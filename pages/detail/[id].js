@@ -5,10 +5,22 @@ import { useQuery } from "@tanstack/react-query";
 import styles from "@/styles/Detail.module.css";
 import Image from "next/image";
 import StarRating from "@/components/star-rating";
+import Modal from "react-modal";
+import MovieTrailer from "@/components/movieTrailer";
+import { useState } from 'react';
 
 export default function Detail() {
   const router = useRouter();
   const { id } = router.query;
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
+  function closeModal() {
+    setModalIsOpen(false);
+  }
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["movie", id],
@@ -43,21 +55,31 @@ export default function Detail() {
           <div className={styles.releaseContainer}>
             <p>{data.release_date}</p>
             <div className={styles.starContainer}>
-              <StarRating vote_average={data.vote_average} totalStars={5} fillColor="#0dbeaf" halfColor="#074a44" />
+              <StarRating
+                vote_average={data.vote_average}
+                totalStars={5}
+                fillColor="#0dbeaf"
+                halfColor="#074a44"
+              />
             </div>
           </div>
-          <p>
+          <p className={styles.genre}>
             {data.genres.map((genre, index, array) => (
               <span key={genre.id}>{genre.name + (index !== array.length - 1 ? " / " : "")}</span>
             ))}
           </p>
+          <span className={styles.runtime}>{data.runtime}min</span>
         </div>
 
         <div className={styles.overviewContainer}>
           <p>{data.overview}</p>
           <div className={styles.buttonContainer}>
-            <button className={styles.button}>Play Movie</button>
-            <button className={styles.button}>Trailer</button>
+
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+              <MovieTrailer id={id} />
+            </Modal>
+            <button className={styles.button} onClick={openModal}>Watch Trailer</button>
+            <button className={styles.button}>Gallery</button>
           </div>
         </div>
       </div>
