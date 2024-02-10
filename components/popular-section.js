@@ -23,7 +23,7 @@ export default function PopularSection() {
   console.log(data);
   return (
     <>
-      <h1>Popular Movies</h1>
+      <h1 className={styles.title}>Popular Movies</h1>
 
       <section>
         {data && (

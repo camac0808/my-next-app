@@ -79,18 +79,20 @@ export default function Carousel({ data }) {
             </div>
           </SwiperSlide>
           <SwiperSlide className={styles.swiperSlide}>
-            <Image
-              className={styles.image}
-              src="/carousel-image/guardians-of-the-galaxy.jpg"
-              alt="guardians-of-the-galaxy"
-              width={1280}
-              height={320}
-            />
-            <div className={styles.swiperContent}>
-              <h2>Guardians Of The Galaxy</h2>
-              <p>{truncate(GuardiansOfTheGalaxytext, 150)}</p>
+            <div className={styles.opacity}>
+              <Image
+                className={styles.image}
+                src="/carousel-image/guardians-of-the-galaxy.jpg"
+                alt="guardians-of-the-galaxy"
+                width={1280}
+                height={320}
+              />
+              <div className={styles.swiperContent}>
+                <h2>Guardians Of The Galaxy</h2>
+                <p>{truncate(GuardiansOfTheGalaxytext, 150)}</p>
+              </div>
             </div>
-          </SwiperSlide>{" "}
+          </SwiperSlide>
           <SwiperSlide className={styles.swiperSlide}>
             <Image
               className={styles.image}
