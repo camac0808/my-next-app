@@ -15,3 +15,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.5rem 0.8rem;
 }
+
+.pagination {
+  margin-top: 50px;
+}

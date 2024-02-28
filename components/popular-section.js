@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CircularProgress } from "@mui/material";
 import fetchPopularMovies from "@/utils/http";
 import styles from "@/styles/Popular.module.css";
+import Pagination from "@/components/pagination";
 
 export default function PopularSection() {
   const { data, isLoading, error } = useQuery({
@@ -28,11 +29,12 @@ export default function PopularSection() {
       <section>
         {data && (
           <ul className={styles.ul}>
-            {data.results.slice(0, 10).map((movie) => (
+            {data.results.slice(0, 9).map((movie) => (
               <Card movie={movie} key={movie.id} />
             ))}
           </ul>
         )}
+        <Pagination />
       </section>
     </>
   );
