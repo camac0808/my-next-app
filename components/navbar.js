@@ -61,7 +61,7 @@ export default function Navbar() {
         >
           Home
         </Link>
-        <Link
+        {/* <Link
           className={`${
             router.pathname === "/about" ? "text-white" : ""
           } px-4 hover:text-white transition duration-200 ease-in-out`}
@@ -76,16 +76,16 @@ export default function Navbar() {
           href="/contact"
         >
           Contact
-        </Link>
+        </Link> */}
       </div>
 
       {/* navbar sign-in button */}
-      <Link
+      {/* <Link
         className="px-3 font-bold text-white hover:text-gray-400 underline transition duration-200 ease-in-out w-32 text-center"
         href="/login"
       >
         Sign In
-      </Link>
+      </Link> */}
     </nav>
   );
 }
