@@ -1,4 +1,4 @@
-## Movie API를 사용하여 제작 (미완성 상태)
+## Movie API를 사용하여 제작
 
 ## 사용한 기술
 - Next.js
